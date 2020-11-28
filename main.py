@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from widgets import PanelQuotes
 
 
 class MainWindow:
@@ -7,6 +8,7 @@ class MainWindow:
         self.master = master
         self.master.title('Currency Quotes')
         self.master.geometry('800x600')
+        self.master.configure(background='white')
 
         options = ['USD', 'EUR', 'JPY']
 
@@ -19,12 +21,15 @@ class MainWindow:
 
         self.master.option_add("*TCombobox*Listbox*Background", 'white')
         self.master.option_add("*TCombobox*Listbox*Foreground", '#6D8EAD')
-        self.master.option_add("*TCombobox*Listbox*Font", ('Roboto', 10))
+        self.master.option_add("*TCombobox*Listbox*Font", ('Roboto', 11))
 
-        menu_comb = ttk.Combobox(root, values=options, justify='center', width=85, font=('Roboto', 12),
+        menu_comb = ttk.Combobox(root, values=options, justify='center', width=58, font=('Roboto', 18),
                                  state='readonly', style='new.TCombobox')
         menu_comb.set('USD')
-        menu_comb.pack()
+        menu_comb.pack(pady='10')
+
+        panel = PanelQuotes(self.master)
+        panel.pack()
 
 
 if __name__ == '__main__':
